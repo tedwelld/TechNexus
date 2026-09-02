@@ -24,6 +24,7 @@ const body = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://axentratechsolutions.com"),
   title: {
     default: `${COMPANY.name} | Software · Web · IT`,
     template: `%s | ${COMPANY.name}`,
@@ -31,9 +32,9 @@ export const metadata: Metadata = {
   description:
     "TechNexus Agency delivers high-performance digital solutions—bespoke software, web platforms, and managed IT—with direct WhatsApp and email access to the developers.",
   icons: {
-    icon: [{ url: "/tna-logo.png", type: "image/png" }],
-    apple: [{ url: "/tna-logo.png" }],
-    shortcut: ["/tna-logo.png"],
+    icon: [{ url: "/images/Axentra tech logo.jpeg", type: "image/jpeg" }],
+    apple: [{ url: "/images/Axentra tech logo.jpeg" }],
+    shortcut: ["/images/Axentra tech logo.jpeg"],
   },
 };
 

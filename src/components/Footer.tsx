@@ -48,7 +48,7 @@ export function Footer({ dark = false }: { dark?: boolean }) {
           <div className="relative mt-2 h-16 w-16 overflow-hidden rounded-full bg-navy ring-2 ring-accent/60">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/tna-logo.png"
+              src="/images/Axentra tech logo.jpeg"
               alt=""
               width={64}
               height={64}

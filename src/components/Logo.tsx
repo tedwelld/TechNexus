@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { COMPANY } from "@/lib/site";
 
-const LOGO_SRC = "/tna-logo.png";
+const LOGO_SRC = "/images/Axentra tech logo.jpeg";
 
 export function Logo({
   light = false,
