@@ -44,8 +44,8 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <CartButton />
-          <Link href="/contact" className="btn btn-primary hidden sm:inline-flex">
-            Get Started
+          <Link href="/enquiry" className="btn btn-primary hidden sm:inline-flex">
+            Start Your Project
           </Link>
         </div>
       </div>

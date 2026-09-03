@@ -277,51 +277,38 @@ export const MESSAGE_TEMPLATES = [
     id: "custom",
     title: "Custom project enquiry",
     email: {
-      subject: "Custom Project Enquiry — [Your Project Name]",
-      body: `Dear TechNexus Agency,
+      subject: "Your TechNexus Project Enquiry — We'll Be in Touch",
+      body: `Thank you, [First name].
 
-I am writing to enquire about a custom project we would like your team to build.
+"Technology shaped around how you work — not a fixed template."
 
-PROJECT OVERVIEW
-[Provide a short description of the project — what it is and who it serves.]
+We've received your project enquiry and will be in touch within 24 hours.
 
-OBJECTIVES
-[What are the main goals and success criteria?]
+PROJECT DETAILS
+Project type: [Website / Software / IT / Custom]
+Scope: [Short description of the project — what it is and who it serves.]
+Objectives: [Main goals and success criteria.]
+Technology: [Preferred platforms, integrations, or existing systems.]
+Timeline: [Target start date and desired delivery date.]
+Budget: [Indicate a budget range so we can scope the right engagement.]
 
-TECHNICAL REQUIREMENTS
-[Preferred platforms, integrations, or any existing systems to consider.]
-
-TIMELINE
-[Target start date and desired delivery date.]
-
-BUDGET
-[Indicate a budget range so we can scope the right engagement.]
-
+CONTACT DETAILS
 Company: [Your company name]
 Contact person: [Your name]
 Email: [Your email]
 Phone: [Your phone]
 
-Please let us know your availability and proposed next steps. We look forward to working with your team.
-
-Kind regards,
-[Your name]
-[Your company]`,
+Warm regards,
+The TechNexus Agency Team`,
     },
     whatsapp: {
-      body: `Hello TechNexus, I'd like to enquire about a custom project.
+      body: `Hello TechNexus Agency, I'd like help with a custom project.
 
 Project: [Short description]
-Goals: [What you want to achieve]
-Tech: [Platform / integrations]
 Timeline: [Target dates]
 Budget: [Range]
 
-Company: [Your company]
-Contact: [Your name]
-Phone: [Your phone]
-
-Please advise next steps. Thanks!`,
+Looking forward to hearing from you.`,
     },
   },
   {

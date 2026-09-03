@@ -25,9 +25,9 @@ export default function ContactPage() {
               <span className="text-primary">Exceptional.</span>
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-muted md:text-lg">
-              Message our information desk on WhatsApp or email with a template,
-              or submit a structured project brief. Cart checkouts also land as
-              ready-to-send briefs.
+              Tell us how your project should take shape with a short guided
+              wizard, send a general enquiry, or message our information desk
+              directly. Cart checkouts also land as ready-to-send briefs.
             </p>
             <ul className="grid max-w-md grid-cols-2 gap-3">
               {[
@@ -39,6 +39,11 @@ export default function ContactPage() {
                 <CheckItem key={item}>{item}</CheckItem>
               ))}
             </ul>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/enquiry" className="btn btn-primary">
+                Start Your Project →
+              </Link>
+            </div>
           </div>
           <SiteImage
             src={IMAGES.contactHero}
