@@ -3,12 +3,7 @@
 import { useState } from "react";
 import type { EnquiryData } from "@/lib/enquiry";
 import { INITIAL_ENQUIRY } from "@/lib/enquiry";
-import {
-  buildEnquiryEmailBody,
-  buildEnquiryEmailSubject,
-  buildEnquiryWhatsAppMessage,
-} from "@/lib/enquiry";
-import { CONTACT_EMAILS, INFO_DESK } from "@/lib/site";
+import { INFO_DESK } from "@/lib/site";
 import { EnquiryProgress } from "./EnquiryProgress";
 import { StepProjectType } from "./steps/StepProjectType";
 import { StepServices } from "./steps/StepServices";
@@ -28,7 +23,9 @@ function canProceed(step: number, data: EnquiryData) {
 export function EnquiryWizard() {
   const [step, setStep] = useState(0);
   const [data, setData] = useState<EnquiryData>(INITIAL_ENQUIRY);
-  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [result, setResult] = useState<{ ref: string; whatsappUrl: string } | null>(null);
 
   const update = (updates: Partial<EnquiryData>) =>
     setData((d) => ({ ...d, ...updates }));
@@ -41,21 +38,33 @@ export function EnquiryWizard() {
   const back = () => setStep((s) => Math.max(s - 1, 0));
   const editStep = (target: number) => setStep(target);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = buildEnquiryEmailSubject(data);
-    const body = buildEnquiryEmailBody(data);
-    window.location.href = `mailto:${CONTACT_EMAILS}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
-    setSubmitted(true);
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.error || "Submission failed");
+      }
+      const json = await res.json();
+      setResult({ ref: json.ref, whatsappUrl: json.whatsappUrl });
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Unknown error";
+      setError(
+        `Something went wrong: ${msg}. Please try again or contact us on WhatsApp.`,
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
-  if (submitted) {
-    const waMessage = buildEnquiryWhatsAppMessage(data);
-    const waHref = `https://wa.me/${INFO_DESK.whatsappE164}?text=${encodeURIComponent(
-      waMessage,
-    )}`;
+  if (result) {
     return (
       <div className="text-center">
         <div className="mx-auto mb-8 grid size-16 place-items-center rounded-full bg-primary-soft">
@@ -64,12 +73,15 @@ export function EnquiryWizard() {
         <h2 className="font-display mb-4 text-4xl font-bold text-foreground">
           Your enquiry is with us.
         </h2>
-        <p className="mx-auto mb-10 max-w-md text-muted">
+        <p className="mx-auto mb-2 max-w-md text-muted">
           We&apos;ve received your project enquiry and will be in touch within
-          24 hours. For immediate assistance, reach us on WhatsApp.
+          24 hours. Reference: <span className="font-semibold">{result.ref}</span>
+        </p>
+        <p className="mx-auto mb-10 max-w-md text-muted">
+          For immediate assistance, reach us on WhatsApp.
         </p>
         <a
-          href={waHref}
+          href={result.whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-whatsapp inline-flex px-8 py-4"
@@ -81,8 +93,9 @@ export function EnquiryWizard() {
           <button
             type="button"
             onClick={() => {
-              setSubmitted(false);
+              setResult(null);
               setStep(0);
+              setData(INITIAL_ENQUIRY);
             }}
             className="text-sm text-muted hover:text-foreground"
           >
@@ -104,6 +117,12 @@ export function EnquiryWizard() {
         {step === 3 && <StepDetails data={data} update={update} />}
         {step === 4 && <StepReview data={data} editStep={editStep} />}
       </div>
+
+      {error && (
+        <p className="mt-4 rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-600">
+          {error}
+        </p>
+      )}
 
       {step < TOTAL_STEPS - 1 ? (
         <div className="mt-10 flex items-center justify-between border-t border-border pt-8">
@@ -128,19 +147,28 @@ export function EnquiryWizard() {
         <div className="mt-10 flex flex-col gap-3 border-t border-border pt-8">
           <button
             type="submit"
-            disabled={!canProceed(4, data)}
-            className="btn btn-primary w-full"
+            disabled={submitting || !canProceed(4, data)}
+            className="btn btn-primary w-full disabled:cursor-not-allowed disabled:opacity-40"
           >
-            <PiIcon name="send" />
-            Send my enquiry
+            {submitting ? (
+              <>
+                <PiIcon name="spinner" className="animate-spin" />
+                Sending your enquiry...
+              </>
+            ) : (
+              <>
+                <PiIcon name="send" />
+                Send my enquiry
+              </>
+            )}
           </button>
           <p className="text-center text-xs text-muted">
-            Opens your email app to {INFO_DESK.email}. Or continue on WhatsApp
-            after sending.
+            Sent to {INFO_DESK.email}.
           </p>
           <button
             type="button"
             onClick={back}
+            disabled={submitting}
             className="text-sm text-muted transition-colors hover:text-foreground"
           >
             ← Back

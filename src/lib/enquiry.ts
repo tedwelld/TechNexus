@@ -120,44 +120,6 @@ function serviceLabel(value: string) {
   return SERVICE_LABELS[value] ?? value;
 }
 
-export function buildEnquiryEmailBody(data: EnquiryData) {
-  const services =
-    data.services.length > 0
-      ? data.services.map(serviceLabel).join(", ")
-      : "To be discussed";
-  const lines = [
-    "New project enquiry from the TechNexus website",
-    "",
-    "PROJECT TYPE",
-    PROJECT_TYPES.find((p) => p.value === data.projectType)?.label ?? data.projectType,
-    "",
-    "SERVICES / AREAS OF INTEREST",
-    services,
-    "",
-    "TIMELINE",
-    data.flexibleTimeline ? "Flexible" : TIMELINE_LABELS[data.timeline] ?? data.timeline,
-    "",
-    "BUDGET",
-    BUDGET_LABELS[data.budget] ?? data.budget,
-    "",
-    "PROJECT DETAILS",
-    data.details || "Not provided",
-    "",
-    "CONTACT",
-    `Name: ${data.fullName}`,
-    `Company: ${data.company || "—"}`,
-    `Email: ${data.email}`,
-    `Phone: ${data.phone || "—"}`,
-    `Preferred contact: ${data.preferredContact}`,
-  ];
-  return lines.join("\n");
-}
-
-export function buildEnquiryEmailSubject(data: EnquiryData) {
-  const type = PROJECT_TYPES.find((p) => p.value === data.projectType)?.label;
-  return `Project Enquiry — ${data.fullName}${type ? ` (${type})` : ""}`;
-}
-
 export function buildEnquiryWhatsAppMessage(data: EnquiryData) {
   const type = PROJECT_TYPES.find((p) => p.value === data.projectType)?.label;
   const services = data.services.map(serviceLabel).join(", ");
@@ -175,26 +137,6 @@ export function buildEnquiryWhatsAppMessage(data: EnquiryData) {
     ...bits,
     "",
     "Looking forward to hearing from you.",
-  ].join("\n");
-}
-
-export function buildGeneralEnquiryEmailBody(data: {
-  fullName: string;
-  email: string;
-  phone: string;
-  subject: string;
-  message: string;
-}) {
-  return [
-    "New general enquiry from the TechNexus website",
-    "",
-    `Name: ${data.fullName}`,
-    `Email: ${data.email}`,
-    `Phone: ${data.phone || "—"}`,
-    `Subject: ${data.subject}`,
-    "",
-    "Message:",
-    data.message,
   ].join("\n");
 }
 

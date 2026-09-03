@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { buildGeneralEnquiryEmailBody, buildGeneralEnquiryWhatsAppMessage } from "@/lib/enquiry";
-import { CONTACT_EMAILS, INFO_DESK } from "@/lib/site";
+import { INFO_DESK } from "@/lib/site";
 import { PiIcon } from "../PiIcon";
 
 const inputCls =
@@ -16,7 +15,9 @@ export function GeneralEnquiry() {
     subject: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [result, setResult] = useState<{ ref: string; whatsappUrl: string } | null>(null);
 
   const set = (key: keyof typeof form, value: string) =>
     setForm((f) => ({ ...f, [key]: value }));
@@ -24,20 +25,33 @@ export function GeneralEnquiry() {
   const canSubmit =
     form.fullName.trim() && form.email.trim() && form.subject.trim() && form.message.trim();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const body = buildGeneralEnquiryEmailBody(form);
-    window.location.href = `mailto:${CONTACT_EMAILS}?subject=${encodeURIComponent(
-      `General Enquiry — ${form.subject}`,
-    )}&body=${encodeURIComponent(body)}`;
-    setSubmitted(true);
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/general-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.error || "Submission failed");
+      }
+      const json = await res.json();
+      setResult({ ref: json.ref, whatsappUrl: json.whatsappUrl });
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Unknown error";
+      setError(
+        `Something went wrong: ${msg}. Please try again or contact us on WhatsApp.`,
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
-  if (submitted) {
-    const waMessage = buildGeneralEnquiryWhatsAppMessage(form);
-    const waHref = `https://wa.me/${INFO_DESK.whatsappE164}?text=${encodeURIComponent(
-      waMessage,
-    )}`;
+  if (result) {
     return (
       <div className="card space-y-5 p-8 text-center">
         <div className="mx-auto grid size-14 place-items-center rounded-full bg-primary-soft">
@@ -47,11 +61,11 @@ export function GeneralEnquiry() {
           Your enquiry is with us.
         </p>
         <p className="text-muted">
-          We&apos;ll be in touch within 24 hours. For immediate assistance, reach
-          us on WhatsApp.
+          We&apos;ve received your enquiry and will be in touch within 24 hours.
+          Reference: <span className="font-semibold">{result.ref}</span>
         </p>
         <a
-          href={waHref}
+          href={result.whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-whatsapp w-full"
@@ -62,7 +76,7 @@ export function GeneralEnquiry() {
         <button
           type="button"
           onClick={() => {
-            setSubmitted(false);
+            setResult(null);
             setForm({ fullName: "", email: "", phone: "", subject: "", message: "" });
           }}
           className="text-sm text-muted hover:text-foreground"
@@ -143,16 +157,31 @@ export function GeneralEnquiry() {
         />
       </label>
 
+      {error && (
+        <p className="rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-600">
+          {error}
+        </p>
+      )}
+
       <button
         type="submit"
-        disabled={!canSubmit}
+        disabled={!canSubmit || submitting}
         className="btn btn-primary w-full disabled:cursor-not-allowed disabled:opacity-40"
       >
-        <PiIcon name="send" />
-        Send enquiry
+        {submitting ? (
+          <>
+            <PiIcon name="spinner" className="animate-spin" />
+            Sending your enquiry...
+          </>
+        ) : (
+          <>
+            <PiIcon name="send" />
+            Send enquiry
+          </>
+        )}
       </button>
       <p className="text-center text-xs text-muted">
-        Opens your email app to {INFO_DESK.email}.
+        Sent to {INFO_DESK.email}.
       </p>
     </form>
   );

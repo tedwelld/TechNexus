@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ContactForm } from "@/components/ContactForm";
+import { EnquiryWizard } from "@/components/forms/EnquiryWizard";
 import { DirectComms } from "@/components/DirectComms";
 import { SiteImage, IMAGES } from "@/components/SiteImage";
 import { SystemOverview } from "@/components/SystemOverview";
@@ -10,7 +10,7 @@ import { INFO_DESK } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact TechNexus via WhatsApp or email—our information desk—using ready message templates or the project form.",
+    "Send us a professional enquiry—a short milestone guide—or message our information desk via WhatsApp or email.",
 };
 
 export default function ContactPage() {
@@ -61,14 +61,15 @@ export default function ContactPage() {
       </section>
 
       <section className="section bg-surface">
-        <div className="container-nx grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="container-nx grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="space-y-4">
             <h2 className="font-display text-2xl font-bold">
-              Contact Information
+              Send us a professional enquiry
             </h2>
             <p className="text-sm text-muted">
-              Reach our information desk—the same numbers and inboxes power cart
-              checkout and message templates.
+              Five short steps — project type, services, timeline, budget and
+              details. No payment yet, just enough for us to propose a clear
+              plan.
             </p>
             <div className="card p-4">
               <p className="font-display font-bold">{INFO_DESK.label}</p>
@@ -87,11 +88,18 @@ export default function ContactPage() {
                 Mon–Fri 9:00–18:00 (CAT) · Managed clients: 24/7
               </p>
             </div>
+            <p className="text-sm text-muted">
+              Have a quick question instead?{" "}
+              <Link href="/enquiry#general-enquiry" className="font-semibold text-primary hover:underline">
+                Send a general enquiry
+              </Link>{" "}
+              or browse the bundled options below.
+            </p>
             <Link href="/pricing" className="btn btn-secondary">
               Browse packages & add to cart →
             </Link>
           </div>
-          <ContactForm />
+          <EnquiryWizard />
         </div>
       </section>
 
