@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   description:
     "TechNexus Agency delivers high-performance digital solutions—bespoke software, web platforms, and managed IT—with direct WhatsApp and email access to the developers.",
   icons: {
-    icon: [{ url: "/images/Axentra tech logo.jpeg", type: "image/jpeg" }],
-    apple: [{ url: "/images/Axentra tech logo.jpeg" }],
-    shortcut: ["/images/Axentra tech logo.jpeg"],
+    icon: [{ url: "/images/logo/axentralt.png", type: "image/png" }],
+    apple: [{ url: "/images/logo/axentralt.png" }],
+    shortcut: ["/images/logo/axentralt.png"],
   },
 };
 
