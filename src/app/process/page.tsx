@@ -158,7 +158,7 @@ export default function ProcessPage() {
 
       <CtaBanner
         title="Ready to build your next technical breakthrough?"
-        subtitle="Book a free consultation—or checkout selected packages to Tedwell and Amunike."
+        subtitle="Book a free consultation—or checkout selected packages to our team."
         primaryLabel="Book Free Consultation"
         primaryHref="/contact"
         secondaryLabel="Explore Services"

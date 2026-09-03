@@ -75,7 +75,7 @@ export default function HomePage() {
               tailored to your enterprise goals. From bespoke software systems to
               robust cloud infrastructure, we build the future of your business.
               Select packages into your cart, checkout to WhatsApp or email, and
-              talk directly with the developers who ship the work.
+              talk directly with the team who ships the work.
             </p>
             <p className="text-sm font-semibold text-accent">
               {COMPANY.tagline}
@@ -225,7 +225,7 @@ export default function HomePage() {
       <CtaBanner
         variant="dark"
         title="Ready to scale your technical capabilities?"
-        subtitle="Add packages to your cart, then checkout straight to Tedwell or Amunike on WhatsApp or email."
+        subtitle="Add packages to your cart, then checkout straight to our team on WhatsApp or email."
         primaryLabel="Contact Us Now"
         primaryHref="/contact"
         secondaryLabel="Our Pricing"

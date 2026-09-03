@@ -5,12 +5,12 @@ import { DirectComms } from "@/components/DirectComms";
 import { SiteImage, IMAGES } from "@/components/SiteImage";
 import { SystemOverview } from "@/components/SystemOverview";
 import { CheckItem } from "@/components/ui";
-import { DEVELOPERS } from "@/lib/site";
+import { INFO_DESK } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact TechNexus developers via WhatsApp or email—Tedwell and Amunike—using ready message templates or the project form.",
+    "Contact TechNexus via WhatsApp or email—our information desk—using ready message templates or the project form.",
 };
 
 export default function ContactPage() {
@@ -25,9 +25,9 @@ export default function ContactPage() {
               <span className="text-primary">Exceptional.</span>
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-muted md:text-lg">
-              Message Tedwell or Amunike directly on WhatsApp, email both
-              developers with a template, or submit a structured project brief.
-              Cart checkouts also land as ready-to-send briefs.
+              Message our information desk on WhatsApp or email with a template,
+              or submit a structured project brief. Cart checkouts also land as
+              ready-to-send briefs.
             </p>
             <ul className="grid max-w-md grid-cols-2 gap-3">
               {[
@@ -62,17 +62,15 @@ export default function ContactPage() {
               Contact Information
             </h2>
             <p className="text-sm text-muted">
-              Prefer a named developer? Use the channels below—same numbers and
-              inboxes power cart checkout and templates.
+              Reach our information desk—the same numbers and inboxes power cart
+              checkout and message templates.
             </p>
-            {DEVELOPERS.map((dev) => (
-              <div key={dev.id} className="card p-4">
-                <p className="font-display font-bold">{dev.name}</p>
-                <p className="text-xs text-primary">{dev.role}</p>
-                <p className="mt-2 text-sm">{dev.email}</p>
-                <p className="text-sm">{dev.whatsapp}</p>
-              </div>
-            ))}
+            <div className="card p-4">
+              <p className="font-display font-bold">{INFO_DESK.label}</p>
+              <p className="text-xs text-primary">TechNexus Agency</p>
+              <p className="mt-2 text-sm">{INFO_DESK.email}</p>
+              <p className="text-sm">{INFO_DESK.whatsapp}</p>
+            </div>
             <div className="card p-4">
               <p className="text-xs font-bold uppercase tracking-wider text-primary">
                 Office / Hours

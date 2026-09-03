@@ -49,8 +49,8 @@ export function ContactForm() {
           Opening your email client…
         </p>
         <p className="text-muted">
-          Your brief is addressed to {DEVELOPERS.map((d) => d.email).join(" & ")}.
-          You can also WhatsApp a developer from the templates above.
+          Your brief is addressed to {DEVELOPERS[0].email}. You can also
+          WhatsApp our team from the floating buttons.
         </p>
         <button
           type="button"
@@ -166,11 +166,10 @@ export function ContactForm() {
 
       <button type="submit" className="btn btn-primary w-full">
         <PiIcon name="send" />
-        Email project request to developers
+        Email project request to our team
       </button>
       <p className="text-center text-xs text-muted">
-        Submits via your email app to both {DEVELOPERS[0].email} and{" "}
-        {DEVELOPERS[1].email}.
+        Submits via your email app to {DEVELOPERS[0].email}.
       </p>
     </form>
   );

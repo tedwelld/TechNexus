@@ -6,12 +6,21 @@ export const COMPANY = {
   hours: "Mon–Fri 9:00–18:00 (CAT) · Managed clients: 24/7",
 } as const;
 
+export const COMPANY_EMAIL = "info@axentratechsolution.com";
+
+export const INFO_DESK = {
+  label: "Information Desk",
+  email: COMPANY_EMAIL,
+  whatsapp: "+263789276807",
+  whatsappE164: "263789276807",
+} as const;
+
 export const DEVELOPERS = [
   {
     id: "tedwell",
     name: "Tedwell",
     role: "Lead Developer & Architect",
-    email: "tedwell@outlook.com",
+    email: COMPANY_EMAIL,
     whatsapp: "+263789276807",
     whatsappE164: "263789276807",
   },
@@ -19,13 +28,13 @@ export const DEVELOPERS = [
     id: "amunike",
     name: "Amunike Sibanibani",
     role: "Senior Developer & Systems Engineer",
-    email: "amunikesibanibani@outlook.com",
+    email: COMPANY_EMAIL,
     whatsapp: "+263774003861",
     whatsappE164: "263774003861",
   },
 ] as const;
 
-export const CONTACT_EMAILS = DEVELOPERS.map((d) => d.email).join(",");
+export const CONTACT_EMAILS = COMPANY_EMAIL;
 
 export type CatalogItem = {
   id: string;
@@ -265,24 +274,147 @@ export function mailtoUrl(subject: string, body: string, to = CONTACT_EMAILS) {
 
 export const MESSAGE_TEMPLATES = [
   {
+    id: "custom",
+    title: "Custom project enquiry",
+    email: {
+      subject: "Custom Project Enquiry — [Your Project Name]",
+      body: `Dear TechNexus Agency,
+
+I am writing to enquire about a custom project we would like your team to build.
+
+PROJECT OVERVIEW
+[Provide a short description of the project — what it is and who it serves.]
+
+OBJECTIVES
+[What are the main goals and success criteria?]
+
+TECHNICAL REQUIREMENTS
+[Preferred platforms, integrations, or any existing systems to consider.]
+
+TIMELINE
+[Target start date and desired delivery date.]
+
+BUDGET
+[Indicate a budget range so we can scope the right engagement.]
+
+Company: [Your company name]
+Contact person: [Your name]
+Email: [Your email]
+Phone: [Your phone]
+
+Please let us know your availability and proposed next steps. We look forward to working with your team.
+
+Kind regards,
+[Your name]
+[Your company]`,
+    },
+    whatsapp: {
+      body: `Hello TechNexus, I'd like to enquire about a custom project.
+
+Project: [Short description]
+Goals: [What you want to achieve]
+Tech: [Platform / integrations]
+Timeline: [Target dates]
+Budget: [Range]
+
+Company: [Your company]
+Contact: [Your name]
+Phone: [Your phone]
+
+Please advise next steps. Thanks!`,
+    },
+  },
+  {
     id: "intro",
     title: "Project introduction",
-    body: `Hi TechNexus team,\n\nI'm exploring a new digital project and would like to speak with a developer about scope, timeline, and pricing.\n\nPlease let me know a good time to connect.\n\nThanks.`,
+    email: {
+      subject: "Project Introduction — [Your Company]",
+      body: `Dear TechNexus Agency,
+
+My name is [Your Name] and I represent [Your Company]. We are exploring a new digital project and would like to discuss scope, timeline, and pricing with your team.
+
+Could you let us know a convenient time to connect? We are happy to share more detail about our goals in the meantime.
+
+Looking forward to hearing from you.
+
+Best regards,
+[Your Name]
+[Your Company]`,
+    },
+    whatsapp: {
+      body: `Hello TechNexus, I'm [Your Name] from [Your Company]. We're exploring a new digital project and would like to discuss scope, timeline, and pricing. When is a good time to connect? Thanks!`,
+    },
   },
   {
     id: "quote",
     title: "Request a formal quote",
-    body: `Hi TechNexus team,\n\nPlease send a formal quotation for the packages I selected on the website. I can share requirements, preferred timeline, and constraints.\n\nLooking forward to your proposal.`,
+    email: {
+      subject: "Formal Quotation Request — [Project Scope]",
+      body: `Dear TechNexus Agency,
+
+Please find attached / referenced below our requirements for a formal quotation on the following scope:
+
+[Briefly describe the packages or services required]
+
+We can share detailed requirements, preferred timelines, and any constraints as needed. Please advise on pricing, timeline, and the next steps to proceed.
+
+Looking forward to your proposal.
+
+Best regards,
+[Your Name]
+[Your Company]`,
+    },
+    whatsapp: {
+      body: `Hello TechNexus, please may I request a formal quote for the following scope: [describe packages / services]. I can share requirements and timelines. Please advise on pricing and next steps. Thank you!`,
+    },
   },
   {
     id: "urgent",
     title: "Urgent support / audit",
-    body: `Hi TechNexus team,\n\nI need urgent technical support / an architecture audit. Please advise the earliest availability for Tedwell or Amunike.\n\nContext: [briefly describe the issue]\n\nThank you.`,
+    email: {
+      subject: "Urgent Support / Technical Audit Request",
+      body: `Dear TechNexus Agency,
+
+We require urgent technical support / a technical architecture audit and would appreciate your earliest availability.
+
+Context
+[Briefly describe the issue, system, or area to review.]
+
+Impact
+[Describe how the situation is affecting operations, if applicable.]
+
+Could you confirm your earliest availability to assist? We can provide full access and background material upon request.
+
+Thank you for your prompt attention.
+
+Regards,
+[Your Name]
+[Your Company]`,
+    },
+    whatsapp: {
+      body: `Hello TechNexus, we need urgent technical support / an architecture audit. Context: [briefly describe the issue]. What is your earliest availability? Thank you!`,
+    },
   },
   {
     id: "partnership",
     title: "Long-term partnership",
-    body: `Hi TechNexus team,\n\nWe're interested in a longer-term engineering partnership (retainer / managed delivery). Please share how engagements typically work with your developers.\n\nRegards.`,
+    email: {
+      subject: "Long-term Engineering Partnership",
+      body: `Dear TechNexus Agency,
+
+We are interested in exploring a longer-term engineering partnership with your team, whether on a retainer or managed-delivery basis.
+
+We would welcome an introduction to how engagements typically work, including scoping, communication, and billing arrangements.
+
+Please let us know a convenient time to discuss. Thank you.
+
+Regards,
+[Your Name]
+[Your Company]`,
+    },
+    whatsapp: {
+      body: `Hello TechNexus, we're interested in a longer-term engineering partnership (retainer / managed delivery). Could you share how engagements typically work with your team? Thank you!`,
+    },
   },
 ] as const;
 
@@ -303,7 +435,7 @@ export const SYSTEM_OVERVIEW = {
     {
       title: "Direct Developer Access",
       detail:
-        "Talk to Tedwell and Amunike over WhatsApp or email using ready templates—or checkout a cart of selected packages and send the brief in one message.",
+        "Talk to our team over WhatsApp or email using ready templates—or checkout a cart of selected packages and send the brief in one message.",
     },
   ],
   capabilities: [

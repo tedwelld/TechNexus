@@ -252,7 +252,7 @@ export default function ServicesPage() {
 
       <CtaBanner
         title="Ready to Build Your Next Digital Asset?"
-        subtitle="Add packages to your cart, then message Tedwell or Amunike with a complete checkout brief."
+        subtitle="Add packages to your cart, then message our team with a complete checkout brief."
         primaryLabel="Schedule a Consultation"
         primaryHref="/contact"
         secondaryLabel="View Pricing Packages"

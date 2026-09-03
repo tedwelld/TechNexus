@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import {
-  DEVELOPERS,
+  INFO_DESK,
   MESSAGE_TEMPLATES,
   mailtoUrl,
   whatsappUrl,
@@ -43,24 +43,24 @@ export function FloatingComms() {
                 {open === "whatsapp" ? "Message on WhatsApp" : "Send an email"}
               </p>
               <p className="text-xs text-white/85">
-                Choose who you want to talk to
+                Reach our team instantly
               </p>
             </div>
 
             <div className="space-y-3 p-3">
-              {DEVELOPERS.map((dev) => {
+              {(() => {
                 const href =
                   open === "whatsapp"
-                    ? whatsappUrl(dev.whatsappE164, template.body)
+                    ? whatsappUrl(INFO_DESK.whatsappE164, template.whatsapp.body)
                     : mailtoUrl(
-                        `TechNexus — ${template.title}`,
-                        template.body,
-                        dev.email,
+                        template.email.subject,
+                        template.email.body,
+                        INFO_DESK.email,
                       );
 
                 return (
                   <a
-                    key={dev.id}
+                    key={INFO_DESK.label}
                     href={href}
                     target={open === "whatsapp" ? "_blank" : undefined}
                     rel={
@@ -72,9 +72,11 @@ export function FloatingComms() {
                     <div className="mb-2 flex items-center justify-between gap-2">
                       <div>
                         <p className="font-display font-bold text-foreground">
-                          {dev.name}
+                          {INFO_DESK.label}
                         </p>
-                        <p className="text-[0.7rem] text-muted">{dev.role}</p>
+                        <p className="text-[0.7rem] text-muted">
+                          TechNexus Agency
+                        </p>
                       </div>
                       <span
                         className={`rounded-full px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-white ${
@@ -95,15 +97,19 @@ export function FloatingComms() {
                         Message preview
                       </p>
                       <p className="line-clamp-3 whitespace-pre-wrap">
-                        {template.body}
+                        {open === "whatsapp"
+                          ? template.whatsapp.body
+                          : template.email.body}
                       </p>
                     </div>
                     <p className="mt-2 text-xs font-semibold text-foreground/80">
-                      {open === "whatsapp" ? dev.whatsapp : dev.email}
+                      {open === "whatsapp"
+                        ? INFO_DESK.whatsapp
+                        : INFO_DESK.email}
                     </p>
                   </a>
                 );
-              })}
+              })()}
             </div>
 
             <div className="border-t border-border px-3 py-2 text-center">
@@ -127,7 +133,7 @@ export function FloatingComms() {
             open === "whatsapp" ? "bg-whatsapp ring-4 ring-whatsapp/30" : "bg-whatsapp"
           }`}
           aria-expanded={open === "whatsapp"}
-          aria-label="WhatsApp developers"
+          aria-label="WhatsApp our team"
         >
           <PiIcon name="whatsapp" size="xl" />
         </button>
@@ -138,7 +144,7 @@ export function FloatingComms() {
             open === "email" ? "bg-primary ring-4 ring-primary/30" : "bg-primary"
           }`}
           aria-expanded={open === "email"}
-          aria-label="Email developers"
+          aria-label="Email our team"
         >
           <PiIcon name="envelope" size="xl" />
         </button>

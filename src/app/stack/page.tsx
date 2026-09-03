@@ -124,7 +124,7 @@ export default function StackPage() {
       <CtaBanner
         variant="navy"
         title="Ready to build your next masterpiece?"
-        subtitle="Our stack is production-ready—select packages, checkout, and talk to the developers."
+        subtitle="Our stack is production-ready—select packages, checkout, and talk to the team."
         primaryLabel="Start Your Project"
         primaryHref="/contact"
         secondaryLabel="View Our Services"

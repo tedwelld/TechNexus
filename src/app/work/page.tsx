@@ -218,7 +218,7 @@ console.log(launch.status); // "production-ready"`}</pre>
       <CtaBanner
         variant="blue"
         title="Have a complex challenge?"
-        subtitle="Add related packages to your cart, then message our developers with a full checkout brief."
+        subtitle="Add related packages to your cart, then message our team with a full checkout brief."
         primaryLabel="Start a Conversation"
         primaryHref="/contact"
         secondaryLabel="See Our Process"

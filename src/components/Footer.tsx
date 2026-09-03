@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { PiIcon } from "./PiIcon";
-import { COMPANY, DEVELOPERS } from "@/lib/site";
+import { COMPANY, INFO_DESK } from "@/lib/site";
 
 const services = [
   { href: "/services", label: "Web Development" },
@@ -35,7 +35,7 @@ export function Footer({ dark = false }: { dark?: boolean }) {
     >
       <div className="container-nx grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-4">
-          <Logo light={dark} />
+          <Logo />
           <p
             className={`max-w-xs text-sm leading-relaxed ${
               dark ? "text-white/65" : "text-muted"
@@ -45,16 +45,6 @@ export function Footer({ dark = false }: { dark?: boolean }) {
             developer access via WhatsApp and email—select packages, checkout,
             and talk to the people who build.
           </p>
-          <div className="relative mt-2 h-16 w-16 overflow-hidden rounded-full bg-navy ring-2 ring-accent/60">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/Axentra tech logo.jpeg"
-              alt=""
-              width={64}
-              height={64}
-              className="h-full w-full object-cover"
-            />
-          </div>
           <div className="flex gap-2 pt-1">
             {socials.map((social) => (
               <span
@@ -130,26 +120,35 @@ export function Footer({ dark = false }: { dark?: boolean }) {
               dark ? "text-white/50" : "text-muted"
             }`}
           >
-            Developers
+            Information Desk
           </h4>
           <ul
             className={`space-y-3 text-sm ${
               dark ? "text-white/75" : "text-foreground/80"
             }`}
           >
-            {DEVELOPERS.map((dev) => (
-              <li key={dev.id}>
-                <p className="font-semibold">{dev.name}</p>
-                <p className="inline-flex items-center gap-1.5">
-                  <PiIcon name="envelope" size="sm" />
-                  {dev.email}
-                </p>
-                <p className="inline-flex items-center gap-1.5">
-                  <PiIcon name="whatsapp" size="sm" />
-                  {dev.whatsapp}
-                </p>
-              </li>
-            ))}
+            <li>
+              <p className="inline-flex items-center gap-1.5">
+                <PiIcon name="envelope" size="sm" />
+                <a
+                  href={`mailto:${INFO_DESK.email}`}
+                  className={dark ? "hover:text-white" : "hover:text-primary"}
+                >
+                  {INFO_DESK.email}
+                </a>
+              </p>
+              <p className="mt-1 inline-flex items-center gap-1.5">
+                <PiIcon name="whatsapp" size="sm" />
+                <a
+                  href={`https://wa.me/${INFO_DESK.whatsappE164}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={dark ? "hover:text-white" : "hover:text-primary"}
+                >
+                  {INFO_DESK.whatsapp}
+                </a>
+              </p>
+            </li>
           </ul>
         </div>
       </div>

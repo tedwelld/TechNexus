@@ -291,7 +291,7 @@ export default function ItServicesPage() {
 
       <CtaBanner
         title="Ready to optimize your IT infrastructure?"
-        subtitle="Add IT packages to your cart, then WhatsApp or email Tedwell and Amunike with your full selection."
+        subtitle="Add IT packages to your cart, then WhatsApp or email our team with your full selection."
         primaryLabel="Free IT Proposal"
         primaryHref="/contact"
         secondaryLabel="Speak to an Expert"

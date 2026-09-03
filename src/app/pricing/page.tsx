@@ -56,7 +56,7 @@ export default function PricingPage() {
               Quality software isn’t an expense—it’s an asset. We provide clear,
               tiered pricing to help your business scale with precision and
               performance. Add any mix of packages to your cart, then checkout to
-              WhatsApp or email our developers with a complete brief.
+              WhatsApp or email our team with a complete brief.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/contact" className="btn btn-primary">
@@ -190,7 +190,7 @@ export default function PricingPage() {
 
       <CtaBanner
         title="Ready to start your digital journey?"
-        subtitle="Book a free consultation—or checkout your cart to Tedwell (+263 789 276 807) or Amunike (+263 774 003 861)."
+        subtitle="Book a free consultation—or checkout your cart to our information desk on WhatsApp."
         primaryLabel="Book Free Consultation"
         primaryHref="/contact"
         secondaryLabel="Explore Our Work"

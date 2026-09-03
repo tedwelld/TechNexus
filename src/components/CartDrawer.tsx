@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import {
-  DEVELOPERS,
+  INFO_DESK,
   buildProjectMessage,
   mailtoUrl,
   whatsappUrl,
@@ -92,7 +92,7 @@ export function CartDrawer() {
           {items.length === 0 ? (
             <p className="rounded-xl bg-surface p-4 text-sm text-muted">
               Your cart is empty. Add packages from Services or Pricing, then
-              checkout to WhatsApp or email our developers.
+              checkout to WhatsApp or email our team.
             </p>
           ) : (
             items.map((item) => (
@@ -185,20 +185,17 @@ export function CartDrawer() {
           {items.length > 0 ? (
             <>
               <p className="text-xs font-semibold uppercase tracking-wider text-muted">
-                Send cart to a developer
+                Send cart to our team
               </p>
-              {DEVELOPERS.map((dev) => (
-                <a
-                  key={dev.id}
-                  href={whatsappUrl(dev.whatsappE164, message)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-whatsapp w-full"
-                >
-                  <PiIcon name="whatsapp" />
-                  WhatsApp {dev.name}
-                </a>
-              ))}
+              <a
+                href={whatsappUrl(INFO_DESK.whatsappE164, message)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-whatsapp w-full"
+              >
+                <PiIcon name="whatsapp" />
+                WhatsApp {INFO_DESK.label}
+              </a>
               <a
                 href={mailtoUrl(
                   `TechNexus project cart — ${count} package(s)`,
@@ -207,7 +204,7 @@ export function CartDrawer() {
                 className="btn btn-primary w-full"
               >
                 <PiIcon name="envelope" />
-                Email both developers
+                Email our team
               </a>
               <button
                 type="button"
