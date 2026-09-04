@@ -39,7 +39,7 @@ export const IMAGES = {
   workMobile: "/images/work-mobile.jpg",
   aboutMission: "/images/about-mission.jpg",
   team1: "/images/team/tedwell.jpg",
-  team2: "/images/team-2.jpg",
+  team2: "/images/team/amunike.jpg",
   teamStephen: "/images/team/stephen.jpg",
   itSupport: "/images/it-support.jpg",
   itNetwork: "/images/it-network.jpg",

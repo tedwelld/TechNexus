@@ -32,9 +32,12 @@ export const metadata: Metadata = {
   description:
     "Axentra Tech Solutions delivers software, web platforms, and managed IT—with direct WhatsApp and email access to the developers.",
   icons: {
-    icon: [{ url: "/images/logo/axentralt.png", type: "image/png" }],
-    apple: [{ url: "/images/logo/axentralt.png" }],
-    shortcut: ["/images/logo/axentralt.png"],
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/images/logo/axentralt.png", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+    shortcut: ["/icon.png"],
   },
 };
 

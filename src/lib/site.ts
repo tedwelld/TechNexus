@@ -273,7 +273,13 @@ export function mailtoUrl(subject: string, body: string, to = CONTACT_EMAILS) {
 }
 
 /** Short starter used by floating contact buttons (no blank placeholders). */
-export function buildQuickContactMessage(channel: "email" | "whatsapp") {
+export function buildQuickContactMessage(
+  channel: "email",
+): { subject: string; body: string };
+export function buildQuickContactMessage(channel: "whatsapp"): { body: string };
+export function buildQuickContactMessage(
+  channel: "email" | "whatsapp",
+): { subject?: string; body: string } {
   if (channel === "email") {
     return {
       subject: `Contact — ${COMPANY.shortName}`,
