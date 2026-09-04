@@ -10,7 +10,7 @@ import { PiIcon } from "@/components/PiIcon";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Transparent TechNexus pricing for websites and software systems—clear tiers, no hidden costs.",
+    "Transparent Axentra pricing for websites and software systems—clear tiers, no hidden costs.",
 };
 
 const faqs = [
@@ -135,7 +135,7 @@ export default function PricingPage() {
         <div className="container-nx grid gap-10 lg:grid-cols-2">
           <div>
             <SectionHeading
-              eyebrow="The Nexus Advantage"
+              eyebrow="Our Advantage"
               title="Why our pricing reflects true value"
               align="left"
             />

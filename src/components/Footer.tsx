@@ -41,9 +41,8 @@ export function Footer({ dark = false }: { dark?: boolean }) {
               dark ? "text-white/65" : "text-muted"
             }`}
           >
-            {COMPANY.tagline} High-performance digital solutions with direct
-            developer access via WhatsApp and email—select packages, checkout,
-            and talk to the people who build.
+            {COMPANY.tagline} Software, web, and IT—with direct developer
+            access via WhatsApp and email.
           </p>
           <div className="flex gap-2 pt-1">
             {socials.map((social) => (

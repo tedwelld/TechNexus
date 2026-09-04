@@ -1,6 +1,6 @@
-# TechNexus Agency
+# Axentra Tech Solutions
 
-Marketing website for TechNexus Agency, implemented from the Visily multi-screen PDF reference.
+Marketing website for Axentra Tech Solutions.
 
 ## Pages
 

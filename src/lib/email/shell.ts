@@ -19,7 +19,7 @@ export function emailShell(title: string, body: string) {
           <td style="background:#071833;padding:32px 40px;text-align:center;">
             <img src="${LOGO_URL}" alt="${COMPANY.name}" width="72" height="72" style="width:72px;height:72px;border-radius:50%;object-fit:contain;background:#fff;padding:6px;" />
             <h1 style="margin:12px 0 0;color:#ffffff;font-size:24px;font-weight:700;font-family:Helvetica,Arial,sans-serif;letter-spacing:-0.02em;">
-              TechNexus <span style="color:#3b82f6;">Agency</span>
+              Axentra <span style="color:#3b82f6;">Tech Solutions</span>
             </h1>
             <p style="margin:6px 0 0;color:#f59e0b;font-size:12px;font-style:italic;">
               ${COMPANY.tagline}

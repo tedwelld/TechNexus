@@ -7,7 +7,7 @@ import { PiIcon } from "@/components/PiIcon";
 export const metadata: Metadata = {
   title: "Tech Stack",
   description:
-    "Explore the TechNexus technical arsenal—frontend, backend, databases, infrastructure, and mobile.",
+    "Explore the Axentra technical stack—frontend, backend, databases, infrastructure, and mobile.",
 };
 
 export default function StackPage() {
@@ -40,7 +40,7 @@ export default function StackPage() {
               <span className="grid size-9 place-items-center rounded-lg bg-primary text-white">
                 <PiIcon name="bolt" />
               </span>
-              <h2 className="font-display text-lg font-bold">Nexus Engine</h2>
+              <h2 className="font-display text-lg font-bold">Delivery Engine</h2>
             </div>
             {[
               ["Cloud-Native Deployment", 100],
@@ -77,7 +77,7 @@ export default function StackPage() {
           <div>
             <span className="badge">Our Philosophy</span>
             <h2 className="font-display mt-4 text-3xl font-bold tracking-tight md:text-4xl">
-              The Nexus Philosophy: Pragmatic Innovation.
+              Our Philosophy: Pragmatic Innovation.
             </h2>
             <p className="mt-3 text-muted">
               Every technology we adopt must earn its place through longevity,

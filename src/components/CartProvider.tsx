@@ -33,7 +33,7 @@ type CartContextValue = {
 };
 
 const CartContext = createContext<CartContextValue | null>(null);
-const STORAGE_KEY = "technexus-cart-v1";
+const STORAGE_KEY = "axentra-cart-v1";
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [lines, setLines] = useState<CartLine[]>([]);

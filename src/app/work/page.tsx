@@ -7,12 +7,12 @@ import { CtaBanner } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Our Work",
   description:
-    "Case studies from TechNexus Agency—e-commerce, SaaS dashboards, and mobile platforms that scale.",
+    "Case studies from Axentra Tech Solutions—e-commerce, SaaS dashboards, and mobile platforms that scale.",
 };
 
 const projects = [
   {
-    title: "NexusCommerce Elite",
+    title: "Commerce Elite",
     tags: ["E-Commerce Development", "Multi-Device Ready"],
     problem:
       "A global retailer needed a high-conversion storefront that could handle multi-region inventory without checkout friction.",
@@ -187,7 +187,7 @@ export default function WorkPage() {
                 Ready to build your next breakthrough?
               </h2>
               <p className="mt-3 text-white/75">
-                Join teams who trust TechNexus to ship ambitious products without
+                Join teams who trust Axentra to ship ambitious products without
                 sacrificing reliability.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
@@ -200,8 +200,8 @@ export default function WorkPage() {
               </div>
             </div>
             <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0b1220] p-5 font-mono text-xs leading-relaxed text-sky-200/90 shadow-2xl">
-              <p className="text-white/40">// nexus.delivery.ts</p>
-              <pre className="mt-3 whitespace-pre-wrap">{`const launch = await technexus.ship({
+              <p className="text-white/40">// axentra.delivery.ts</p>
+              <pre className="mt-3 whitespace-pre-wrap">{`const launch = await axentra.ship({
   product: "breakthrough",
   quality: "enterprise",
   velocity: "sprint",

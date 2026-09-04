@@ -122,29 +122,55 @@ function serviceLabel(value: string) {
 
 export function buildEnquiryWhatsAppMessage(data: EnquiryData) {
   const type = PROJECT_TYPES.find((p) => p.value === data.projectType)?.label;
-  const services = data.services.map(serviceLabel).join(", ");
-  const bits = [
-    `Project type: ${type ?? "—"}`,
-    `Services: ${services || "To be discussed"}`,
-    data.flexibleTimeline
-      ? "Timeline: Flexible"
-      : `Timeline: ${TIMELINE_LABELS[data.timeline] ?? data.timeline}`,
-    `Budget: ${BUDGET_LABELS[data.budget] ?? data.budget}`,
-  ];
+  const services = data.services.map(serviceLabel).join(", ") || "To be discussed";
+  const timeline = data.flexibleTimeline
+    ? "Flexible"
+    : TIMELINE_LABELS[data.timeline] ?? data.timeline;
+
   return [
-    `Hello ${INFO_DESK.label}, I'd like to start a project with TechNexus.`,
+    `Hello ${INFO_DESK.label} — new project enquiry via the Axentra website.`,
     "",
-    ...bits,
+    "PROJECT DETAILS",
+    `Project type: ${type ?? "—"}`,
+    `Services: ${services}`,
+    `Timeline: ${timeline}`,
+    `Budget: ${BUDGET_LABELS[data.budget] ?? data.budget}`,
+    data.details ? `Details: ${data.details}` : null,
     "",
-    "Looking forward to hearing from you.",
-  ].join("\n");
+    "CONTACT DETAILS",
+    `Name: ${data.fullName}`,
+    data.company ? `Company: ${data.company}` : null,
+    `Email: ${data.email}`,
+    data.phone ? `Phone: ${data.phone}` : null,
+    `Preferred contact: ${data.preferredContact}`,
+    "",
+    "Please confirm next steps.",
+  ]
+    .filter(Boolean)
+    .join("\n");
 }
 
 export function buildGeneralEnquiryWhatsAppMessage(data: {
   fullName: string;
+  email?: string;
+  phone?: string;
   subject: string;
+  message?: string;
 }) {
-  return `Hello ${INFO_DESK.label}, I'd like to get in touch regarding "${data.subject}". — ${data.fullName}. Looking forward to hearing from you.`;
+  return [
+    `Hello ${INFO_DESK.label} — general enquiry via the Axentra website.`,
+    "",
+    `Subject: ${data.subject}`,
+    data.message ? `Message: ${data.message}` : null,
+    "",
+    `Name: ${data.fullName}`,
+    data.email ? `Email: ${data.email}` : null,
+    data.phone ? `Phone: ${data.phone}` : null,
+    "",
+    "Please reply when convenient.",
+  ]
+    .filter(Boolean)
+    .join("\n");
 }
 
 export { TIMELINE_LABELS, BUDGET_LABELS, TYPE_LABELS, SERVICE_LABELS };

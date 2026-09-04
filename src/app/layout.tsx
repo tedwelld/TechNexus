@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: `%s | ${COMPANY.name}`,
   },
   description:
-    "TechNexus Agency delivers high-performance digital solutions—bespoke software, web platforms, and managed IT—with direct WhatsApp and email access to the developers.",
+    "Axentra Tech Solutions delivers software, web platforms, and managed IT—with direct WhatsApp and email access to the developers.",
   icons: {
     icon: [{ url: "/images/logo/axentralt.png", type: "image/png" }],
     apple: [{ url: "/images/logo/axentralt.png" }],

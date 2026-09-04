@@ -198,7 +198,7 @@ export function CartDrawer() {
               </a>
               <a
                 href={mailtoUrl(
-                  `TechNexus project cart — ${count} package(s)`,
+                  `Axentra project cart — ${count} package(s)`,
                   message,
                 )}
                 className="btn btn-primary w-full"

@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import {
+  COMPANY,
   INFO_DESK,
-  MESSAGE_TEMPLATES,
+  buildQuickContactMessage,
   mailtoUrl,
   whatsappUrl,
 } from "@/lib/site";
@@ -13,7 +14,6 @@ type Channel = "whatsapp" | "email" | null;
 
 export function FloatingComms() {
   const [open, setOpen] = useState<Channel>(null);
-  const template = MESSAGE_TEMPLATES[0];
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -42,21 +42,21 @@ export function FloatingComms() {
               <p className="font-display text-sm font-bold">
                 {open === "whatsapp" ? "Message on WhatsApp" : "Send an email"}
               </p>
-              <p className="text-xs text-white/85">
-                Reach our team instantly
-              </p>
+              <p className="text-xs text-white/85">Reach our information desk</p>
             </div>
 
             <div className="space-y-3 p-3">
               {(() => {
                 const href =
                   open === "whatsapp"
-                    ? whatsappUrl(INFO_DESK.whatsappE164, template.whatsapp.body)
-                    : mailtoUrl(
-                        template.email.subject,
-                        template.email.body,
-                        INFO_DESK.email,
-                      );
+                    ? whatsappUrl(
+                        INFO_DESK.whatsappE164,
+                        buildQuickContactMessage("whatsapp").body,
+                      )
+                    : (() => {
+                        const msg = buildQuickContactMessage("email");
+                        return mailtoUrl(msg.subject, msg.body, INFO_DESK.email);
+                      })();
 
                 return (
                   <a
@@ -75,7 +75,7 @@ export function FloatingComms() {
                           {INFO_DESK.label}
                         </p>
                         <p className="text-[0.7rem] text-muted">
-                          TechNexus Agency
+                          {COMPANY.name}
                         </p>
                       </div>
                       <span
@@ -86,23 +86,7 @@ export function FloatingComms() {
                         Open
                       </span>
                     </div>
-                    <div
-                      className={`rounded-xl px-3 py-2 text-xs leading-relaxed ${
-                        open === "whatsapp"
-                          ? "bg-[#e7f8f0] text-[#075e54]"
-                          : "bg-primary-soft text-foreground/85"
-                      }`}
-                    >
-                      <p className="mb-1 font-semibold opacity-70">
-                        Message preview
-                      </p>
-                      <p className="line-clamp-3 whitespace-pre-wrap">
-                        {open === "whatsapp"
-                          ? template.whatsapp.body
-                          : template.email.body}
-                      </p>
-                    </div>
-                    <p className="mt-2 text-xs font-semibold text-foreground/80">
+                    <p className="text-xs font-semibold text-foreground/80">
                       {open === "whatsapp"
                         ? INFO_DESK.whatsapp
                         : INFO_DESK.email}
@@ -130,7 +114,9 @@ export function FloatingComms() {
           type="button"
           onClick={() => setOpen((v) => (v === "whatsapp" ? null : "whatsapp"))}
           className={`grid size-14 place-items-center rounded-full text-white shadow-lg transition hover:scale-105 ${
-            open === "whatsapp" ? "bg-whatsapp ring-4 ring-whatsapp/30" : "bg-whatsapp"
+            open === "whatsapp"
+              ? "bg-whatsapp ring-4 ring-whatsapp/30"
+              : "bg-whatsapp"
           }`}
           aria-expanded={open === "whatsapp"}
           aria-label="WhatsApp our team"

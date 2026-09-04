@@ -66,7 +66,7 @@ export default function EnquiryPage() {
               <p className="font-display text-sm font-bold text-foreground">
                 {INFO_DESK.label}
               </p>
-              <p className="text-xs text-primary">TechNexus Agency</p>
+              <p className="text-xs text-primary">Axentra Tech Solutions</p>
               <p className="mt-2 text-sm text-foreground/85">
                 {INFO_DESK.email}
               </p>

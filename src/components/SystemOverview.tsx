@@ -9,9 +9,9 @@ export function SystemOverview({
     <section className={dense ? "section-tight bg-surface" : "section bg-surface"}>
       <div className="container-nx">
         <div className="mb-8 max-w-3xl">
-          <span className="badge">How the system works</span>
+          <span className="badge">How we work</span>
           <h2 className="font-display mt-4 text-3xl font-bold tracking-tight md:text-4xl">
-            One platform for selection, checkout, and developer contact
+            Select packages, checkout, and reach developers
           </h2>
           <p className="mt-3 text-muted">{SYSTEM_OVERVIEW.summary}</p>
         </div>

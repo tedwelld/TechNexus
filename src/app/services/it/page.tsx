@@ -9,7 +9,7 @@ import { CheckItem, CtaBanner, SectionHeading } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Managed IT Solutions",
   description:
-    "Managed IT, helpdesk, networking, and cloud infrastructure from TechNexus Agency.",
+    "Managed IT, helpdesk, networking, and cloud infrastructure from Axentra Tech Solutions.",
 };
 
 const faqs = [
@@ -167,7 +167,7 @@ export default function ItServicesPage() {
       <section className="section bg-surface">
         <div className="container-nx">
           <SectionHeading
-            eyebrow="The TechNexus Advantage"
+            eyebrow="Our Advantage"
             title="Why Leading Firms Trust Our IT Expertise"
           />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LiveSystemsMonitor } from "@/components/LiveSystemsMonitor";
 import { SiteImage, IMAGES } from "@/components/SiteImage";
 import { SystemOverview } from "@/components/SystemOverview";
 import { TechBackdrop } from "@/components/TechBackdrop";
@@ -71,11 +72,9 @@ export default function HomePage() {
               Software · Web · IT
             </p>
             <p className="max-w-xl text-base leading-relaxed text-muted md:text-lg">
-              TechNexus Agency delivers high-performance digital solutions
-              tailored to your enterprise goals. From bespoke software systems to
-              robust cloud infrastructure, we build the future of your business.
-              Select packages into your cart, checkout to WhatsApp or email, and
-              talk directly with the team who ships the work.
+              {COMPANY.name} builds software, websites, and IT solutions.
+              Select packages, checkout via WhatsApp or email, and talk directly
+              with the team who ships the work.
             </p>
             <p className="text-sm font-semibold text-accent">
               {COMPANY.tagline}
@@ -103,31 +102,7 @@ export default function HomePage() {
           </div>
 
           <div className="fade-up-delay relative">
-            <div className="float-y relative aspect-[5/4] overflow-hidden rounded-2xl shadow-[0_30px_60px_rgba(7,24,51,0.28)]">
-              <SiteImage
-                src={IMAGES.heroNetwork}
-                alt="Global technology network"
-                className="absolute inset-0"
-                priority
-                sizes="(max-width: 1024px) 100vw, 560px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-navy/55 via-transparent to-primary/20" />
-              <div className="absolute bottom-5 left-5 rounded-xl border border-border bg-[var(--panel-bg)]/95 p-3 shadow-xl backdrop-blur">
-                <div className="flex items-center gap-3">
-                  <span className="grid size-10 place-items-center rounded-lg bg-primary text-white">
-                    <PiIcon name="microchip" />
-                  </span>
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-wider text-muted">
-                      Live Systems
-                    </p>
-                    <p className="text-sm font-semibold text-foreground">
-                      99.9% uptime monitored
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <LiveSystemsMonitor />
           </div>
         </div>
       </section>
@@ -135,8 +110,8 @@ export default function HomePage() {
       <section className="section">
         <div className="container-nx">
           <SectionHeading
-            title="Core Agency Services"
-            subtitle="End-to-end engineering across software, web, and IT—so your roadmap moves from idea to production with confidence."
+            title="Core Services"
+            subtitle="Software, web, and IT—from idea to production."
           />
           <div className="grid gap-6 md:grid-cols-3">
             {services.map((service) => (

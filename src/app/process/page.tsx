@@ -7,7 +7,7 @@ import { CheckItem, CtaBanner } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Our Process",
   description:
-    "How TechNexus builds excellence—consultation, requirements, proposal, development, and deployment support.",
+    "How Axentra builds—consultation, requirements, proposal, development, and deployment support.",
 };
 
 const steps = [
@@ -78,13 +78,13 @@ export default function ProcessPage() {
     <>
       <section className="gradient-mesh">
         <div className="container-nx py-16 text-center lg:py-20">
-          <span className="badge">The TechNexus Way</span>
+          <span className="badge">How We Work</span>
           <h1 className="font-display mx-auto mt-5 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
-            How We Build Excellence.
+            How We Build.
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-            A structured, high-performance workflow that turns ambition into
-            shipped software—with clarity at every milestone.
+            A clear workflow from ambition to shipped software—with milestones
+            you can follow.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link href="/contact" className="btn btn-primary">

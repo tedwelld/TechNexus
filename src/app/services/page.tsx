@@ -9,7 +9,7 @@ import { PiIcon } from "@/components/PiIcon";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Website development, enterprise software systems, and engineering excellence from TechNexus Agency.",
+    "Website development, enterprise software systems, and engineering from Axentra Tech Solutions.",
 };
 
 const webPlans = [
@@ -87,8 +87,8 @@ export default function ServicesPage() {
               <span className="text-primary">Tailored to Your Vision.</span>
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-muted md:text-lg">
-              From high-conversion websites to complex enterprise architectures,
-              we deliver engineering excellence that drives business growth.
+              From websites to enterprise systems, we deliver engineering that
+              drives growth.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/contact" className="btn btn-primary">
@@ -228,9 +228,9 @@ export default function ServicesPage() {
       <section className="section">
         <div className="container-nx">
           <SectionHeading
-            eyebrow="The TechNexus Edge"
-            title="Why Choose Our Agency"
-            subtitle="A delivery culture built around clarity, velocity, and durable engineering."
+            eyebrow="Our Edge"
+            title="Why Choose Us"
+            subtitle="Clarity, velocity, and durable engineering."
           />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {edges.map((edge) => (
