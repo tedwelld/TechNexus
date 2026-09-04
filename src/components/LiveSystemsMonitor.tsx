@@ -85,15 +85,16 @@ function nextSnapshot(prev: Snapshot | null): Snapshot {
   });
 
   const eventSeed = EVENT_POOL[Math.floor(Math.random() * EVENT_POOL.length)];
+  const nextId = (prev?.tick ?? 0) + 1000;
   const nextEvent: EventRow = {
-    id: (prev?.tick ?? 0) + 1,
+    id: nextId,
     time: nowStamp(),
     ...eventSeed,
   };
   const events = prev
     ? [nextEvent, ...prev.events].slice(0, 5)
     : Array.from({ length: 5 }, (_, i) => ({
-        id: i,
+        id: i + 1,
         time: nowStamp(),
         ...EVENT_POOL[i % EVENT_POOL.length],
       }));
@@ -137,14 +138,14 @@ export function LiveSystemsMonitor() {
 
   if (!snap) {
     return (
-      <div className="float-y relative aspect-[5/4] overflow-hidden rounded-2xl border border-border bg-[var(--panel-bg)] shadow-[0_30px_60px_rgba(7,24,51,0.28)]" />
+      <div className="relative min-h-[22rem] overflow-hidden rounded-2xl border border-border bg-[var(--panel-bg)] shadow-[0_30px_60px_rgba(7,24,51,0.28)] sm:min-h-0 sm:aspect-[5/4] lg:float-y" />
     );
   }
 
   const maxSpark = Math.max(...snap.spark, 1);
 
   return (
-    <div className="float-y relative aspect-[5/4] overflow-hidden rounded-2xl border border-border bg-[#071833] text-white shadow-[0_30px_60px_rgba(7,24,51,0.28)]">
+    <div className="relative flex min-h-[22rem] flex-col overflow-hidden rounded-2xl border border-border bg-[#071833] text-white shadow-[0_30px_60px_rgba(7,24,51,0.28)] sm:min-h-0 sm:aspect-[5/4] lg:float-y">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(59,130,246,0.28),transparent_42%),radial-gradient(circle_at_85%_80%,rgba(14,165,233,0.18),transparent_40%)]" />
       <div
         className="absolute inset-0 opacity-30"
@@ -155,17 +156,17 @@ export function LiveSystemsMonitor() {
         }}
       />
 
-      <div className="relative flex h-full flex-col gap-3 p-3.5 sm:p-4">
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <p className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-sky-200/80">
+      <div className="relative flex h-full min-h-0 flex-col gap-2.5 p-3 sm:gap-3 sm:p-4">
+        <div className="flex items-center justify-between gap-2">
+          <div className="min-w-0">
+            <p className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-sky-200/80 sm:text-[0.65rem] sm:tracking-[0.18em]">
               Live systems · BI monitor
             </p>
             <p className="mt-0.5 font-display text-sm font-bold sm:text-base">
               Operations dashboard
             </p>
           </div>
-          <div className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[0.65rem] font-semibold">
+          <div className="flex shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/5 px-2 py-1 text-[0.6rem] font-semibold sm:px-2.5 sm:text-[0.65rem]">
             <span className="relative flex size-2">
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-60" />
               <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
@@ -197,16 +198,18 @@ export function LiveSystemsMonitor() {
 
         <div className="grid min-h-0 flex-1 gap-2 sm:grid-cols-[1.15fr_0.85fr]">
           <div className="flex min-h-0 flex-col rounded-xl border border-white/10 bg-white/5 p-2.5">
-            <div className="mb-2 flex items-center justify-between">
+            <div className="mb-2 flex items-center justify-between gap-2">
               <p className="text-[0.65rem] font-bold uppercase tracking-wider text-white/60">
                 Request load
               </p>
-              <p className="text-[0.65rem] text-white/45">CPU {snap.cpu}% · MEM {snap.memory}%</p>
+              <p className="text-[0.6rem] text-white/45 sm:text-[0.65rem]">
+                CPU {snap.cpu}% · MEM {snap.memory}%
+              </p>
             </div>
-            <div className="flex min-h-[4.5rem] flex-1 items-end gap-[3px]">
+            <div className="flex h-16 items-end gap-[3px] sm:h-auto sm:min-h-[4.5rem] sm:flex-1">
               {snap.spark.map((v, i) => (
                 <span
-                  key={`${snap.tick}-${i}`}
+                  key={`spark-${i}`}
                   className="flex-1 rounded-t-sm bg-gradient-to-t from-sky-500/40 to-sky-300 transition-[height] duration-500"
                   style={{ height: `${(v / maxSpark) * 100}%` }}
                 />
@@ -267,7 +270,7 @@ export function LiveSystemsMonitor() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-white/10 bg-black/25 p-2.5">
+        <div className="hidden rounded-xl border border-white/10 bg-black/25 p-2.5 sm:block">
           <p className="mb-1.5 text-[0.65rem] font-bold uppercase tracking-wider text-white/60">
             Event stream
           </p>

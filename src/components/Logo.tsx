@@ -14,7 +14,7 @@ export function Logo({ showWordmark = true }: { showWordmark?: boolean }) {
   return (
     <Link
       href="/"
-      className="group inline-flex items-center gap-2.5"
+      className="group inline-flex max-w-full items-center gap-2"
       aria-label={COMPANY.name}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -23,11 +23,11 @@ export function Logo({ showWordmark = true }: { showWordmark?: boolean }) {
         alt=""
         width={160}
         height={56}
-        className="h-11 w-auto max-w-[9.5rem] object-contain object-left sm:h-12 sm:max-w-[11rem]"
+        className="h-9 w-auto max-w-[7.5rem] object-contain object-left sm:h-11 sm:max-w-[10rem]"
         decoding="async"
       />
       {showWordmark && (
-        <span className="hidden min-[380px]:block leading-tight">
+        <span className="hidden leading-tight md:block">
           <span className="block font-display text-sm font-extrabold tracking-tight text-foreground sm:text-[0.95rem]">
             {COMPANY.shortName}
           </span>

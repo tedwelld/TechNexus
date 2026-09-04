@@ -78,9 +78,11 @@ html[data-theme="dark"] {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
+  position: relative;
   background:
     radial-gradient(circle at 12% 8%, var(--body-glow-a), transparent 28%),
     radial-gradient(circle at 88% 12%, var(--body-glow-b), transparent 24%),
@@ -88,15 +90,17 @@ body {
   color: var(--foreground);
   font-family: var(--font-body), system-ui, sans-serif;
   transition: background 0.45s ease, color 0.3s ease;
+  overflow-x: clip;
+  min-width: 0;
 }
 
 body::before {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.35;
+  opacity: 0.28;
   background-image:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
@@ -127,8 +131,14 @@ a {
 }
 
 .container-nx {
-  width: min(1180px, calc(100% - 2rem));
+  width: min(1180px, calc(100% - 1.5rem));
   margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .container-nx {
+    width: min(1180px, calc(100% - 2rem));
+  }
 }
 
 .badge {
@@ -158,6 +168,16 @@ a {
     border-color 0.2s ease, color 0.2s ease;
   border: 1px solid transparent;
   white-space: nowrap;
+  max-width: 100%;
+}
+
+@media (max-width: 639px) {
+  .btn {
+    white-space: normal;
+    text-align: center;
+    padding: 0.75rem 1.1rem;
+    font-size: 0.9rem;
+  }
 }
 
 .btn:hover {
@@ -260,6 +280,35 @@ a {
 
 .pulse-glow {
   animation: pulseGlow 3.2s ease-in-out infinite;
+}
+
+@media (max-width: 1023px) {
+  .float-y {
+    animation: none;
+  }
+
+  .fade-up,
+  .fade-up-delay {
+    animation: none;
+  }
+
+  .tech-orb {
+    opacity: 0.28;
+    filter: blur(22px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-y,
+  .fade-up,
+  .fade-up-delay,
+  .pulse-glow {
+    animation: none !important;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
 }
 
 @keyframes floatY {
@@ -408,6 +457,16 @@ a {
 
 @media (max-width: 900px) {
   .section {
-    padding: 3.5rem 0;
+    padding: 3rem 0;
+  }
+
+  .section-tight {
+    padding: 2.25rem 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .section {
+    padding: 2.5rem 0;
   }
 }

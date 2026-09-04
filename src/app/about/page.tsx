@@ -115,7 +115,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
             {engineers.map((person) => (
               <article
                 key={person.name}
@@ -124,7 +124,7 @@ export default function AboutPage() {
                 <SiteImage
                   src={person.image}
                   alt={person.name}
-                  className="aspect-[4/5] w-full object-cover"
+                  className="aspect-[4/5] w-full object-cover object-top"
                   priority={person.name === "Stephen"}
                 />
                 <div className="flex flex-1 flex-col p-5 md:p-6">

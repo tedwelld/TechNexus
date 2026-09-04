@@ -24,7 +24,7 @@ export function FloatingComms() {
   }, []);
 
   return (
-    <div className="pointer-events-none fixed bottom-[5.5rem] right-4 z-[60] flex flex-col items-end gap-3 lg:bottom-6 lg:right-6">
+    <div className="pointer-events-none fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom))] right-3 z-[60] flex flex-col items-end gap-2.5 sm:right-4 lg:bottom-6 lg:right-6 lg:gap-3">
       {open && (
         <>
           <button
@@ -33,7 +33,7 @@ export function FloatingComms() {
             className="pointer-events-auto fixed inset-0 z-[-1] cursor-default bg-navy/25 backdrop-blur-[1px]"
             onClick={() => setOpen(null)}
           />
-          <div className="pointer-events-auto w-[min(100vw-2rem,22rem)] overflow-hidden rounded-2xl border border-border bg-[var(--panel-bg)] shadow-[0_20px_50px_rgba(7,24,51,0.25)]">
+          <div className="pointer-events-auto mb-1 w-[min(100vw-1.5rem,20rem)] overflow-hidden rounded-2xl border border-border bg-[var(--panel-bg)] shadow-[0_20px_50px_rgba(7,24,51,0.25)] lg:w-[min(100vw-2rem,22rem)]">
             <div
               className={`px-4 py-3 text-white ${
                 open === "whatsapp" ? "bg-whatsapp" : "bg-primary"
@@ -109,11 +109,11 @@ export function FloatingComms() {
         </>
       )}
 
-      <div className="pointer-events-auto flex flex-col items-end gap-3">
+      <div className="pointer-events-auto flex flex-col items-end gap-2.5 lg:gap-3">
         <button
           type="button"
           onClick={() => setOpen((v) => (v === "whatsapp" ? null : "whatsapp"))}
-          className={`grid size-14 place-items-center rounded-full text-white shadow-lg transition hover:scale-105 ${
+          className={`grid size-12 place-items-center rounded-full text-white shadow-lg transition hover:scale-105 sm:size-14 ${
             open === "whatsapp"
               ? "bg-whatsapp ring-4 ring-whatsapp/30"
               : "bg-whatsapp"
@@ -126,7 +126,7 @@ export function FloatingComms() {
         <button
           type="button"
           onClick={() => setOpen((v) => (v === "email" ? null : "email"))}
-          className={`grid size-14 place-items-center rounded-full text-white shadow-lg transition hover:scale-105 ${
+          className={`grid size-12 place-items-center rounded-full text-white shadow-lg transition hover:scale-105 sm:size-14 ${
             open === "email" ? "bg-primary ring-4 ring-primary/30" : "bg-primary"
           }`}
           aria-expanded={open === "email"}

@@ -21,7 +21,7 @@ export function MobileBottomNav() {
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       aria-label="Mobile"
     >
-      <ul className="mx-auto grid max-w-lg grid-cols-5 px-1 pt-1.5 pb-1.5">
+      <ul className="mx-auto grid max-w-lg grid-cols-5 gap-0 px-0.5 pt-1 pb-1">
         {items.map((item) => {
           const active =
             item.href === "/"
@@ -29,23 +29,23 @@ export function MobileBottomNav() {
               : pathname.startsWith(item.href);
 
           return (
-            <li key={item.href}>
+            <li key={item.href} className="min-w-0">
               <Link
                 href={item.href}
-                className={`flex flex-col items-center gap-0.5 rounded-xl px-1 py-1.5 text-[0.65rem] font-semibold transition-colors ${
+                className={`flex flex-col items-center gap-0.5 rounded-xl px-0.5 py-1 text-[0.62rem] font-semibold transition-colors ${
                   active
                     ? "text-primary"
                     : "text-muted hover:text-foreground"
                 }`}
               >
                 <span
-                  className={`grid size-9 place-items-center rounded-xl transition-colors ${
+                  className={`grid size-8 place-items-center rounded-xl transition-colors sm:size-9 ${
                     active ? "bg-primary-soft" : "bg-transparent"
                   }`}
                 >
                   <PiIcon name={item.icon} size="lg" />
                 </span>
-                {item.label}
+                <span className="truncate">{item.label}</span>
               </Link>
             </li>
           );

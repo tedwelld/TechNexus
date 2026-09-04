@@ -61,10 +61,10 @@ export default function HomePage() {
     <>
       <section className="gradient-mesh overflow-hidden">
         <TechBackdrop />
-        <div className="container-nx grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-20">
-          <div className="fade-up space-y-6">
+        <div className="container-nx grid items-center gap-8 py-10 sm:gap-10 sm:py-14 lg:grid-cols-2 lg:gap-12 lg:py-20">
+          <div className="fade-up space-y-5 sm:space-y-6">
             <span className="badge">Innovation at Scale</span>
-            <h1 className="font-display text-4xl font-extrabold leading-[1.08] tracking-tight md:text-5xl lg:text-[3.4rem]">
+            <h1 className="font-display text-[2rem] font-extrabold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.4rem]">
               Your Business.{" "}
               <span className="text-primary">Our Technology.</span>
             </h1>

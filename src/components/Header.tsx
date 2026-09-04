@@ -19,8 +19,10 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-[var(--header-bg)] backdrop-blur-md">
-      <div className="container-nx flex h-[76px] items-center justify-between gap-4">
-        <Logo />
+      <div className="container-nx flex h-16 items-center justify-between gap-2 sm:h-[72px] sm:gap-4">
+        <div className="min-w-0 shrink">
+          <Logo />
+        </div>
 
         <nav className="hidden items-center gap-7 lg:flex">
           {links.map((link) => {
@@ -42,9 +44,12 @@ export function Header() {
           })}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <CartButton />
-          <Link href="/enquiry" className="btn btn-primary hidden sm:inline-flex">
+          <Link
+            href="/enquiry"
+            className="btn btn-primary hidden sm:inline-flex"
+          >
             Start Your Project
           </Link>
         </div>

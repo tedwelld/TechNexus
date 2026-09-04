@@ -31,7 +31,7 @@ export function CtaBanner({
     <section className="section-tight">
       <div className="container-nx">
         <div
-          className={`${bg} relative overflow-hidden rounded-[1.5rem] px-8 py-12 text-center text-white md:px-14 md:py-14`}
+          className={`${bg} relative overflow-hidden rounded-2xl px-5 py-10 text-center text-white sm:rounded-[1.5rem] sm:px-8 sm:py-12 md:px-14 md:py-14`}
         >
           <div className="pointer-events-none absolute -right-10 -top-10 size-48 rounded-full bg-white/10 blur-2xl" />
           <div className="pointer-events-none absolute -bottom-16 left-10 size-56 rounded-full bg-cyan-300/10 blur-2xl" />
