@@ -99,15 +99,12 @@ export default function ServicesPage() {
               </Link>
             </div>
           </div>
-          <div className="fade-up-delay relative aspect-[5/4] overflow-hidden rounded-2xl shadow-[0_25px_50px_rgba(11,102,255,0.15)] ring-1 ring-border">
-            <SiteImage
-              src={IMAGES.servicesHero}
-              alt="Engineering workspace"
-              className="absolute inset-0"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-navy/40 via-transparent to-primary/10" />
-          </div>
+          <SiteImage
+            src={IMAGES.servicesHero}
+            alt="Engineering workspace"
+            className="aspect-[5/4] rounded-2xl shadow-[0_25px_50px_rgba(11,102,255,0.15)] ring-1 ring-border"
+            priority
+          />
         </div>
       </section>
 
@@ -122,33 +119,46 @@ export default function ServicesPage() {
             {webPlans.map((plan) => (
               <article
                 key={plan.id}
-                className={`card relative p-6 ${
+                className={`card relative overflow-hidden ${
                   plan.popular ? "ring-2 ring-primary" : ""
                 }`}
               >
                 {plan.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-navy px-3 py-1 text-[0.68rem] font-bold uppercase tracking-wider text-white">
+                  <span className="absolute left-1/2 top-3 z-10 -translate-x-1/2 rounded-full bg-navy px-3 py-1 text-[0.68rem] font-bold uppercase tracking-wider text-white">
                     Most Popular
                   </span>
                 )}
-                <h3 className="font-display text-xl font-bold">{plan.name}</h3>
-                <p className="mt-2 font-display text-4xl font-extrabold">
-                  {plan.price}
-                  <span className="text-base font-semibold text-muted">
-                    /project
-                  </span>
-                </p>
-                <ul className="mt-5 space-y-2.5">
-                  {plan.features.map((f) => (
-                    <CheckItem key={f}>{f}</CheckItem>
-                  ))}
-                </ul>
-                <AddToCartButton
-                  itemId={plan.id}
-                  label={`Add ${plan.name} to cart`}
-                  variant={plan.popular ? "primary" : "secondary"}
-                  className="mt-7 w-full"
+                <SiteImage
+                  src={
+                    plan.id === "web-ecommerce"
+                      ? IMAGES.workEcommerce
+                      : plan.id === "web-business"
+                        ? IMAGES.serviceWeb
+                        : IMAGES.process1
+                  }
+                  alt={`${plan.name} website package`}
+                  className="aspect-[16/10]"
                 />
+                <div className="p-6">
+                  <h3 className="font-display text-xl font-bold">{plan.name}</h3>
+                  <p className="mt-2 font-display text-4xl font-extrabold">
+                    {plan.price}
+                    <span className="text-base font-semibold text-muted">
+                      /project
+                    </span>
+                  </p>
+                  <ul className="mt-5 space-y-2.5">
+                    {plan.features.map((f) => (
+                      <CheckItem key={f}>{f}</CheckItem>
+                    ))}
+                  </ul>
+                  <AddToCartButton
+                    itemId={plan.id}
+                    label={`Add ${plan.name} to cart`}
+                    variant={plan.popular ? "primary" : "secondary"}
+                    className="mt-7 w-full"
+                  />
+                </div>
               </article>
             ))}
           </div>
@@ -164,57 +174,71 @@ export default function ServicesPage() {
             align="left"
           />
           <div className="grid gap-6 lg:grid-cols-2">
-            <article className="card p-7">
-              <p className="text-xs font-bold uppercase tracking-wider text-primary">
-                Starting from $1,200
-              </p>
-              <h3 className="font-display mt-2 text-2xl font-bold">
-                Enterprise Resource Planning (ERP)
-              </h3>
-              <ul className="mt-5 grid gap-2 sm:grid-cols-2">
-                {[
-                  "Inventory Sync",
-                  "HR / Payroll Modules",
-                  "Finance Automation",
-                  "Role-based Access",
-                  "Reporting Suites",
-                  "Legacy Connectors",
-                ].map((item) => (
-                  <CheckItem key={item}>{item}</CheckItem>
-                ))}
-              </ul>
-              <AddToCartButton
-                itemId="erp"
-                label="Add ERP to cart"
-                variant="secondary"
-                className="mt-6"
+            <article className="card overflow-hidden">
+              <SiteImage
+                src={IMAGES.serviceSoftware}
+                alt="Enterprise resource planning systems"
+                className="aspect-[16/9]"
               />
+              <div className="p-7">
+                <p className="text-xs font-bold uppercase tracking-wider text-primary">
+                  Starting from $1,200
+                </p>
+                <h3 className="font-display mt-2 text-2xl font-bold">
+                  Enterprise Resource Planning (ERP)
+                </h3>
+                <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                  {[
+                    "Inventory Sync",
+                    "HR / Payroll Modules",
+                    "Finance Automation",
+                    "Role-based Access",
+                    "Reporting Suites",
+                    "Legacy Connectors",
+                  ].map((item) => (
+                    <CheckItem key={item}>{item}</CheckItem>
+                  ))}
+                </ul>
+                <AddToCartButton
+                  itemId="erp"
+                  label="Add ERP to cart"
+                  variant="secondary"
+                  className="mt-6"
+                />
+              </div>
             </article>
-            <article className="card p-7">
-              <p className="text-xs font-bold uppercase tracking-wider text-primary">
-                Starting from $2,500
-              </p>
-              <h3 className="font-display mt-2 text-2xl font-bold">
-                Custom SaaS Development
-              </h3>
-              <ul className="mt-5 grid gap-2 sm:grid-cols-2">
-                {[
-                  "Multi-tenant Architecture",
-                  "Cloud Infrastructure",
-                  "Subscription Billing",
-                  "Observability Stack",
-                  "API Ecosystem",
-                  "Growth Experiments",
-                ].map((item) => (
-                  <CheckItem key={item}>{item}</CheckItem>
-                ))}
-              </ul>
-              <AddToCartButton
-                itemId="saas"
-                label="Add SaaS to cart"
-                variant="secondary"
-                className="mt-6"
+            <article className="card overflow-hidden">
+              <SiteImage
+                src={IMAGES.workDashboard}
+                alt="Custom SaaS platform dashboard"
+                className="aspect-[16/9]"
               />
+              <div className="p-7">
+                <p className="text-xs font-bold uppercase tracking-wider text-primary">
+                  Starting from $2,500
+                </p>
+                <h3 className="font-display mt-2 text-2xl font-bold">
+                  Custom SaaS Development
+                </h3>
+                <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                  {[
+                    "Multi-tenant Architecture",
+                    "Cloud Infrastructure",
+                    "Subscription Billing",
+                    "Observability Stack",
+                    "API Ecosystem",
+                    "Growth Experiments",
+                  ].map((item) => (
+                    <CheckItem key={item}>{item}</CheckItem>
+                  ))}
+                </ul>
+                <AddToCartButton
+                  itemId="saas"
+                  label="Add SaaS to cart"
+                  variant="secondary"
+                  className="mt-6"
+                />
+              </div>
             </article>
           </div>
           <div className="mt-8">
